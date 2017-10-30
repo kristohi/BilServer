@@ -5,10 +5,43 @@
  */
 package bilserver;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import gnu.io.SerialPort;
+
 /**
  *
- * @author JKK
+ * @author IB,
  */
-public class SerialWrite {
-    
-}
+public class SerialWrite implements Runnable {
+
+    OutputStream out;
+    String msg = "Start";
+
+    public SerialWrite(OutputStream out) {
+        this.out = out;
+    }
+
+    public void run() {
+        int msgCounter = 0;
+      while (true) {
+        String outMsg = msg + " " + msgCounter;
+        char[] buffer = outMsg.toCharArray();
+        // send text message
+        for (int i = 0; i < buffer.length; i++) {
+          try {
+            this.out.write(buffer[i]);
+          }
+          catch (IOException e) {
+            e.printStackTrace();
+          }
+        }
+        msgCounter++;
+        try {
+          Thread.sleep(5000);
+        }
+        catch (InterruptedException e) {
+        }
+      }
+    }
+  }
