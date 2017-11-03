@@ -22,8 +22,10 @@ public class Connect {
   private static final int BAUD_RATE = 9600;
   private static final int TIME_OUT = 4000;
   private static final String PORT_NAME = "COM4";
+  private final DataOperator dataoperator;
   
-  public Connect() {
+  public Connect(DataOperator dataoperator) {
+      this.dataoperator = dataoperator;
     try {
       // (new TwoWaySerialComm()).connect(PORT_NAME);
       connect(PORT_NAME);
@@ -53,7 +55,7 @@ public class Connect {
         InputStream in = serialPort.getInputStream();
         OutputStream out = serialPort.getOutputStream();
 
-        SerialRead sr = new SerialRead(in);
+        SerialRead sr = new SerialRead(in,dataoperator);
         Thread reader = new Thread(sr);
         reader.start();
 

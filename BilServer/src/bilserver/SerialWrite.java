@@ -16,7 +16,7 @@ import gnu.io.SerialPort;
 public class SerialWrite implements Runnable {
 
     OutputStream out;
-    String msg = "Start";
+    String msg = "S";
 
     public SerialWrite(OutputStream out) {
         this.out = out;

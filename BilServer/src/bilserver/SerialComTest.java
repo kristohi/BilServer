@@ -10,11 +10,16 @@ package bilserver;
  * @author Jkk
  */
 
-
 public class SerialComTest{
+    
 
 public static void main(String[] args) {
-Connect comm = new Connect();
+    DataOperator dataoperator;
+    dataoperator = new DataOperator();
+    
+    Connect comm = new Connect(dataoperator);
     
 }
+
+
 }
