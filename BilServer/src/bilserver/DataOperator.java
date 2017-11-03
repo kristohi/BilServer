@@ -40,7 +40,7 @@ public class DataOperator {
 
     }
         
-        String W = strings[0];
+        //String W = strings[0];
         
         
         
@@ -56,11 +56,21 @@ public class DataOperator {
     }
 
     public String[] getStrings() {
-        return stringFromArduino;
+        return stringsFromArduino;
     }
 
     public int getMaxStrings() {
         return maxStrings;
     }
 
+    /*
+        Sets the 
+    */
+    
+    public void goForward(){
+        this.setStrings(dataToarduino[])
+        
+    }
+    
+    
 }
